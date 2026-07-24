@@ -1,213 +1,847 @@
 ---
-import NetworkParticles from './NetworkParticles.jsx';
+const navItems = [
+  { label: 'Proyectos', href: '#portafolio' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Cómo trabajamos', href: '#proceso' },
+  { label: 'Nosotros', href: '#nosotros' },
+];
+
+/*
+ * Agrega aquí los siguientes sistemas cuando sus demos estén listas.
+ *
+ * Ejemplo:
+ * { value: 'Sistema punto de venta', label: 'Sistema punto de venta' }
+ */
+const demoOptions = [
+  {
+    value: 'Sistema para gimnasios',
+    label: 'Sistema para gimnasios',
+  },
+];
 ---
 
-<section class="relative min-h-[90vh] lg:min-h-screen overflow-hidden bg-slate-950">
-  <NetworkParticles client:idle />
+<header id="inicio" class="relative overflow-hidden bg-[#fbfcff]">
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute -left-24 top-28 h-72 w-72 rounded-full bg-blue-200/55 blur-3xl"></div>
+    <div class="absolute -right-20 top-10 h-80 w-80 rounded-full bg-orange-100/70 blur-3xl"></div>
+    <div class="absolute inset-x-0 top-0 h-[520px] bg-[linear-gradient(to_bottom,rgba(239,246,255,.85),transparent)]"></div>
+  </div>
 
-  <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_90%_70%_at_50%_-10%,rgba(37,99,235,0.30),transparent_60%)]"></div>
-  <div class="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(2,6,23,0.35),rgba(2,6,23,0.95))]"></div>
-  <div class="absolute left-[-8rem] top-32 -z-10 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl"></div>
-  <div class="absolute right-[-6rem] bottom-20 -z-10 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl"></div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <nav
+      class="relative z-40 flex min-h-20 items-center justify-between gap-5 py-4"
+      aria-label="Navegación principal"
+    >
+      <a
+        href="#inicio"
+        class="inline-flex shrink-0 items-center"
+        aria-label="Ir al inicio"
+      >
+        <img
+          src="/logo.png"
+          alt="RexCoreSolutions"
+          class="h-12 w-auto object-contain sm:h-14"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    
-    <nav class="relative mt-6">
-      <div class="flex items-center justify-between rounded-3xl border border-white/10 bg-white/[0.04] px-5 py-3 backdrop-blur-xl shadow-2xl shadow-blue-950/30">
-        <a href="#inicio" class="inline-flex items-center shrink-0">
-          <img
-            src="/logo.png"
-            alt="RexCoreSolutions"
-            class="h-12 w-auto sm:h-14 lg:h-16 object-contain drop-shadow-[0_0_16px_rgba(56,189,248,0.45)]"
-            loading="eager"
-            decoding="async"
-          />
-        </a>
+      <div class="hidden items-center gap-1 rounded-full border border-slate-200 bg-white/90 p-1.5 shadow-sm lg:flex">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-blue-50 hover:text-blue-700"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
 
-        <div class="hidden md:flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-2 py-2">
-          <a
-            href="#galeria-giratoria"
-            class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-cyan-500/10 hover:text-cyan-300"
-          >
-            Portafolio
-          </a>
-          <a
-            href="#servicios"
-            class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-cyan-500/10 hover:text-cyan-300"
-          >
-            Servicios
-          </a>
-          <a
-            href="#about"
-            class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-cyan-500/10 hover:text-cyan-300"
-          >
-            Nosotros
-          </a>
-          <a
-            href="#contacto"
-            class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-cyan-500/10 hover:text-cyan-300"
-          >
-            Contacto
-          </a>
-        </div>
+      <div class="hidden items-center gap-2 md:flex">
+        <button
+          type="button"
+          data-open-demo-modal
+          class="hidden items-center justify-center rounded-full border border-blue-200 bg-white px-5 py-3 text-sm font-bold text-blue-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50 xl:inline-flex"
+        >
+          Solicitar demo
+        </button>
+
         <a
           href="#contacto"
-          class="hidden md:inline-flex shrink-0 items-center rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:scale-[1.03] hover:shadow-cyan-500/30"
+          class="inline-flex items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-700/15 transition hover:-translate-y-0.5 hover:bg-blue-800"
         >
-          Agendar llamada
+          Cuéntanos tu idea
         </a>
       </div>
 
-      <div class="md:hidden mt-4">
-        <div class="grid grid-cols-4 gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-2 backdrop-blur-xl shadow-xl shadow-blue-950/20">
-          <a href="#galeria-giratoria" class="rounded-xl px-2 py-3 text-center text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-cyan-300">
-            Portafolio
-          </a>
-          <a href="#servicios" class="rounded-xl px-2 py-3 text-center text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-cyan-300">
-            Servicios
-          </a>
-          <a href="#about" class="rounded-xl px-2 py-3 text-center text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-cyan-300">
-            Nosotros
-          </a>
-          <a href="#contacto" class="rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400 px-2 py-3 text-center text-xs font-semibold text-white">
-            Contacto
+      <button
+        id="mobileMenuButton"
+        type="button"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-800 shadow-sm lg:hidden"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        aria-label="Abrir menú"
+      >
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 7h16M4 12h16M4 17h16"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobileMenu"
+        class="absolute left-0 right-0 top-[76px] hidden rounded-3xl border border-slate-200 bg-white p-3 shadow-2xl lg:hidden"
+      >
+        <div class="grid gap-1">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+            >
+              {item.label}
+            </a>
+          ))}
+
+          <button
+            type="button"
+            data-open-demo-modal
+            class="mt-2 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-center text-sm font-bold text-blue-700"
+          >
+            Solicitar demo
+          </button>
+
+          <a
+            href="#contacto"
+            class="rounded-2xl bg-blue-700 px-4 py-3 text-center text-sm font-bold text-white"
+          >
+            Cuéntanos tu idea
           </a>
         </div>
       </div>
     </nav>
 
-    <div id="inicio" class="grid min-h-[calc(90vh-110px)] lg:min-h-[calc(100vh-110px)] items-center gap-12 py-10 lg:grid-cols-[1fr_0.95fr] lg:py-16">
+    <div class="grid items-center gap-12 pb-20 pt-10 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[1.03fr_.97fr] lg:gap-16 lg:pb-24 lg:pt-12">
       <div class="max-w-3xl">
-        <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-1.5 text-sm text-cyan-100 shadow-lg shadow-cyan-500/10">
-          <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
-          </span>
-          Disponible para nuevos proyectos
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
+          <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+          Soluciones digitales hechas para tu negocio
         </div>
 
-        <h1 class="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Más clientes, más control,
-          <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-            más crecimiento.
-          </span>
+        <h1 class="text-balance text-4xl font-black leading-[1.04] tracking-[-0.04em] text-slate-950 sm:text-5xl lg:text-7xl">
+          Tu negocio puede verse mejor y funcionar
+          <span class="text-blue-700">mucho más fácil.</span>
         </h1>
 
-        <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-          Desarrollamos páginas web, sistemas y aplicaciones modernas para impulsar la productividad y el crecimiento de tu negocio.
+        <p class="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+          Creamos páginas web, sistemas y aplicaciones que te ayudan a atraer
+          clientes, organizar tu operación y ahorrar tiempo en tareas
+          repetitivas.
         </p>
 
-        <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
             href="#contacto"
-            class="group inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400 px-7 py-3.5 font-semibold text-white shadow-xl shadow-cyan-500/20 transition hover:scale-[1.03]"
+            class="group inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800"
           >
-            Quiero cotizar mi proyecto
-            <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+            Solicitar una propuesta
+            <svg
+              class="ml-2 h-4 w-4 transition group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h14m-6-6 6 6-6 6"
+              />
+            </svg>
           </a>
 
           <a
-            href="#servicios"
-            class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] px-7 py-3.5 font-medium text-slate-200 backdrop-blur-sm transition hover:border-cyan-300/30 hover:bg-white/[0.08] hover:text-white"
+            href="#portafolio"
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-4 text-sm font-bold text-slate-800 transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
           >
-            Ver servicios
+            Ver proyectos
           </a>
         </div>
 
-        <div class="mt-10 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
-          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-            <p class="mb-1 text-sm font-semibold text-white">Diseño profesional</p>
-            <p class="text-sm leading-relaxed text-slate-400">Una imagen moderna que genera confianza.</p>
+        <div class="mt-9 grid max-w-2xl gap-3 sm:grid-cols-3">
+          <div class="flex items-start gap-3 rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200/80">
+            <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
+              ✓
+            </span>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Atención directa</p>
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Sin explicaciones complicadas.
+              </p>
+            </div>
           </div>
 
-          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-            <p class="mb-1 text-sm font-semibold text-white">Automatización</p>
-            <p class="text-sm leading-relaxed text-slate-400">Menos tareas manuales y más control.</p>
+          <div class="flex items-start gap-3 rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200/80">
+            <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              ✓
+            </span>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Hecho a tu medida</p>
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Solo lo que realmente necesitas.
+              </p>
+            </div>
           </div>
 
-          <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-            <p class="mb-1 text-sm font-semibold text-white">Escalable</p>
-            <p class="text-sm leading-relaxed text-slate-400">Preparado para crecer contigo.</p>
+          <div class="flex items-start gap-3 rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200/80">
+            <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-700">
+              ✓
+            </span>
+            <div>
+              <p class="text-sm font-bold text-slate-900">Acompañamiento</p>
+              <p class="mt-1 text-xs leading-5 text-slate-500">
+                Te explicamos cada paso.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="hidden lg:block">
-        <div class="relative w-full max-w-[520px] ml-auto overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/75 p-6 shadow-2xl shadow-blue-950/50 backdrop-blur-xl">
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.16),transparent_40%)]"></div>
+      <div class="relative mx-auto w-full max-w-[590px] lg:mx-0 lg:ml-auto">
+        <div class="absolute -inset-5 -z-10 rounded-[3rem] bg-gradient-to-br from-blue-200/70 via-white to-orange-100 blur-2xl"></div>
 
-          <div class="relative mb-6 flex items-center justify-between gap-4">
-            <div class="flex shrink-0 gap-2">
-              <span class="h-3 w-3 rounded-full bg-red-400"></span>
-              <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
-              <span class="h-3 w-3 rounded-full bg-green-400"></span>
+        <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_30px_80px_rgba(30,64,175,.16)] sm:p-6">
+          <div class="mb-5 flex items-center justify-between border-b border-slate-100 pb-4">
+            <div class="flex gap-2" aria-hidden="true">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-300"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-green-300"></span>
             </div>
 
-            <span class="truncate rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">
-              Sistema inteligente
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
+              Tu negocio, en orden
             </span>
           </div>
 
-          <div class="relative mb-5 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
-            <p class="mb-1 text-sm text-slate-400">Panel personalizado</p>
-            <h2 class="text-2xl font-bold leading-tight text-white">Control total de tu operación</h2>
-            <p class="mt-2 text-sm leading-relaxed text-slate-400">
-              Ventas, clientes, reportes y procesos conectados en una sola plataforma.
+          <div class="rounded-[1.5rem] bg-gradient-to-br from-blue-700 to-blue-600 p-5 text-white sm:p-6">
+            <p class="text-sm font-semibold text-blue-100">
+              Panel de control
+            </p>
+
+            <h2 class="mt-2 text-2xl font-black sm:text-3xl">
+              Todo lo importante en un solo lugar
+            </h2>
+
+            <p class="mt-3 max-w-md text-sm leading-6 text-blue-50">
+              Consulta ventas, clientes, tareas y resultados sin perder tiempo
+              buscando información.
             </p>
           </div>
 
-          <div class="relative mb-5 grid grid-cols-2 gap-4">
-            <div class="min-w-0 rounded-3xl border border-blue-400/20 bg-blue-500/15 p-5">
-              <p class="text-3xl font-bold text-white">24/7</p>
-              <p class="mt-1 text-sm text-slate-300">Presencia digital</p>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl bg-blue-50 p-4 sm:p-5">
+              <div class="flex items-center justify-between gap-2">
+                <p class="text-xs font-bold uppercase tracking-wider text-blue-700">
+                  Clientes
+                </p>
+
+                <span class="rounded-full bg-white px-2 py-1 text-[10px] font-bold text-green-700 shadow-sm">
+                  +12%
+                </span>
+              </div>
+
+              <p class="mt-3 text-3xl font-black text-slate-950">248</p>
+              <p class="mt-1 text-xs text-slate-500">
+                Información actualizada
+              </p>
             </div>
 
-            <div class="min-w-0 rounded-3xl border border-emerald-400/20 bg-emerald-500/15 p-5">
-              <p class="text-3xl font-bold text-white">+85%</p>
-              <p class="mt-1 text-sm text-slate-300">Procesos optimizados</p>
+            <div class="rounded-2xl bg-orange-50 p-4 sm:p-5">
+              <div class="flex items-center justify-between gap-2">
+                <p class="text-xs font-bold uppercase tracking-wider text-orange-700">
+                  Pendientes
+                </p>
+
+                <span class="rounded-full bg-white px-2 py-1 text-[10px] font-bold text-slate-600 shadow-sm">
+                  Hoy
+                </span>
+              </div>
+
+              <p class="mt-3 text-3xl font-black text-slate-950">06</p>
+              <p class="mt-1 text-xs text-slate-500">
+                Tareas por completar
+              </p>
             </div>
           </div>
 
-          <div class="relative mb-5 space-y-4 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
-            <div>
-              <div class="mb-2 flex justify-between gap-3 text-sm">
-                <span class="truncate text-slate-300">Automatización</span>
-                <span class="shrink-0 text-cyan-300">85%</span>
+          <div class="mt-4 rounded-2xl border border-slate-200 p-4 sm:p-5">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-sm font-bold text-slate-950">
+                  Resumen del mes
+                </p>
+                <p class="mt-1 text-xs text-slate-500">
+                  Una vista clara de tu avance
+                </p>
               </div>
-              <div class="h-2 overflow-hidden rounded-full bg-slate-800">
-                <div class="h-full w-[85%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"></div>
-              </div>
+
+              <span class="rounded-full bg-green-50 px-3 py-1.5 text-xs font-bold text-green-700">
+                Todo va bien
+              </span>
             </div>
 
-            <div>
-              <div class="mb-2 flex justify-between gap-3 text-sm">
-                <span class="truncate text-slate-300">Imagen profesional</span>
-                <span class="shrink-0 text-emerald-300">95%</span>
-              </div>
-              <div class="h-2 overflow-hidden rounded-full bg-slate-800">
-                <div class="h-full w-[95%] rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="relative grid grid-cols-3 gap-3">
-            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center">
-              <p class="text-sm font-semibold text-white">Web</p>
-              <p class="mt-1 text-xs text-slate-400">Moderna</p>
-            </div>
-
-            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center">
-              <p class="text-sm font-semibold text-white">Sistema</p>
-              <p class="mt-1 text-xs text-slate-400">A medida</p>
-            </div>
-
-            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center">
-              <p class="text-sm font-semibold text-white">App</p>
-              <p class="mt-1 text-xs text-slate-400">Escalable</p>
+            <div
+              class="mt-6 flex h-28 items-end gap-2"
+              aria-label="Gráfica ilustrativa de crecimiento"
+            >
+              {[38, 52, 45, 66, 58, 78, 88, 72, 95].map((height, index) => (
+                <div class="flex flex-1 items-end">
+                  <div
+                    class:list={[
+                      'w-full rounded-t-lg',
+                      index === 8 ? 'bg-blue-700' : 'bg-blue-100',
+                    ]}
+                    style={`height:${height}%`}
+                  ></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</header>
+
+<!-- Modal para solicitar demostración -->
+<div class="hero-demo-modal" id="heroDemoModal" aria-hidden="true">
+  <button
+    type="button"
+    class="hero-demo-backdrop"
+    data-close-demo-modal
+    aria-label="Cerrar formulario"
+  ></button>
+
+  <div
+    class="hero-demo-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="heroDemoTitle"
+  >
+    <button
+      type="button"
+      class="hero-demo-close"
+      id="heroDemoClose"
+      aria-label="Cerrar"
+    >
+      ×
+    </button>
+
+    <span class="hero-demo-label">Demostración personalizada</span>
+
+    <h2 id="heroDemoTitle" class="hero-demo-title">
+      Conoce el sistema antes de decidir.
+    </h2>
+
+    <p class="hero-demo-description">
+      Selecciona el sistema que te interesa y déjanos tus datos. Nos pondremos
+      en contacto contigo para mostrarte cómo funciona.
+    </p>
+
+    <form
+      id="heroDemoForm"
+      class="hero-demo-form"
+      action="https://formspree.io/f/xaqzanwj"
+      method="POST"
+    >
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nueva solicitud de demostración"
+      />
+
+      <input
+        type="hidden"
+        name="origen"
+        value="Botón solicitar demo del encabezado"
+      />
+
+      <input
+        type="text"
+        name="_gotcha"
+        tabindex="-1"
+        autocomplete="off"
+        class="hero-demo-honeypot"
+        aria-hidden="true"
+      />
+
+      <div class="hero-demo-field">
+        <label for="heroDemoSystem">Sistema de interés</label>
+
+        <div class="hero-demo-select-wrapper">
+          <select
+            id="heroDemoSystem"
+            name="sistema"
+            required
+          >
+            {demoOptions.map((demo) => (
+              <option value={demo.value}>{demo.label}</option>
+            ))}
+          </select>
+
+          <svg
+            class="hero-demo-select-icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-demo-grid">
+        <div class="hero-demo-field">
+          <label for="heroDemoName">Nombre completo</label>
+          <input
+            id="heroDemoName"
+            name="name"
+            type="text"
+            placeholder="Escribe tu nombre"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="hero-demo-field">
+          <label for="heroDemoEmail">Correo electrónico</label>
+          <input
+            id="heroDemoEmail"
+            name="email"
+            type="email"
+            placeholder="correo@empresa.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="hero-demo-submit">
+        <span data-demo-submit-label>Enviar solicitud</span>
+        <span data-demo-submit-loading hidden>Enviando...</span>
+      </button>
+
+      <p
+        id="heroDemoMessage"
+        class="hero-demo-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+    </form>
+  </div>
+</div>
+
+<style>
+  .hero-demo-modal,
+  .hero-demo-modal * {
+    box-sizing: border-box;
+  }
+
+  .hero-demo-modal {
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    display: none;
+    place-items: center;
+    padding: 18px;
+  }
+
+  .hero-demo-modal.active {
+    display: grid;
+  }
+
+  .hero-demo-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: rgba(15, 23, 42, 0.52);
+    backdrop-filter: blur(10px);
+    cursor: default;
+  }
+
+  .hero-demo-dialog {
+    position: relative;
+    width: min(590px, 100%);
+    max-height: calc(100dvh - 36px);
+    overflow-y: auto;
+    border: 1px solid #dbe6f3;
+    border-radius: 30px;
+    background: #ffffff;
+    padding: 32px;
+    box-shadow: 0 32px 90px rgba(15, 23, 42, 0.24);
+    animation: hero-demo-in 0.22s ease;
+  }
+
+  .hero-demo-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbe6f3;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .hero-demo-close:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  .hero-demo-label {
+    display: inline-flex;
+    max-width: calc(100% - 58px);
+    border-radius: 999px;
+    background: #eaf2ff;
+    padding: 8px 13px;
+    color: #1d4ed8;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-demo-title {
+    margin: 18px 0 0;
+    padding-right: 38px;
+    color: #0f172a;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-weight: 950;
+    line-height: 1.08;
+  }
+
+  .hero-demo-description {
+    margin: 15px 0 0;
+    color: #5b687b;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .hero-demo-form {
+    display: grid;
+    gap: 17px;
+    margin-top: 25px;
+  }
+
+  .hero-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .hero-demo-field {
+    display: grid;
+    gap: 8px;
+  }
+
+  .hero-demo-field label {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 850;
+  }
+
+  .hero-demo-field input,
+  .hero-demo-field select {
+    width: 100%;
+    min-height: 50px;
+    border: 1px solid #d7e2ef;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 12px 14px;
+    color: #0f172a;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hero-demo-field input::placeholder {
+    color: #94a3b8;
+  }
+
+  .hero-demo-field input:focus,
+  .hero-demo-field select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+  }
+
+  .hero-demo-select-wrapper {
+    position: relative;
+  }
+
+  .hero-demo-select-wrapper select {
+    appearance: none;
+    padding-right: 46px;
+    cursor: pointer;
+  }
+
+  .hero-demo-select-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 19px;
+    height: 19px;
+    color: #64748b;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  .hero-demo-submit {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 14px;
+    background: #1d4ed8;
+    padding: 14px 20px;
+    color: #ffffff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .hero-demo-submit:hover {
+    background: #1e40af;
+    transform: translateY(-1px);
+  }
+
+  .hero-demo-submit:disabled {
+    cursor: wait;
+    opacity: 0.72;
+    transform: none;
+  }
+
+  .hero-demo-message {
+    min-height: 20px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .hero-demo-message.success {
+    color: #047857;
+  }
+
+  .hero-demo-message.error {
+    color: #b91c1c;
+  }
+
+  .hero-demo-honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  @keyframes hero-demo-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.97);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-demo-modal {
+      align-items: end;
+      padding: 10px;
+    }
+
+    .hero-demo-dialog {
+      width: 100%;
+      max-height: calc(100dvh - 20px);
+      border-radius: 25px 25px 18px 18px;
+      padding: 25px 20px 20px;
+    }
+
+    .hero-demo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline>
+  const menuButton = document.getElementById('mobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  const demoModal = document.getElementById('heroDemoModal');
+  const demoCloseButton = document.getElementById('heroDemoClose');
+  const demoOpenButtons = document.querySelectorAll(
+    '[data-open-demo-modal]',
+  );
+  const demoForm = document.getElementById('heroDemoForm');
+  const demoMessage = document.getElementById('heroDemoMessage');
+
+  function closeMenu() {
+    if (!menuButton || !mobileMenu) return;
+
+    mobileMenu.classList.add('hidden');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  function openDemoModal() {
+    if (!demoModal) return;
+
+    closeMenu();
+
+    demoModal.classList.add('active');
+    demoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    window.setTimeout(() => {
+      document.getElementById('heroDemoSystem')?.focus();
+    }, 50);
+  }
+
+  function closeDemoModal() {
+    if (!demoModal) return;
+
+    demoModal.classList.remove('active');
+    demoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  menuButton?.addEventListener('click', () => {
+    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+
+    mobileMenu?.classList.toggle('hidden', isOpen);
+    menuButton.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  demoOpenButtons.forEach((button) => {
+    button.addEventListener('click', openDemoModal);
+  });
+
+  demoCloseButton?.addEventListener('click', closeDemoModal);
+
+  demoModal
+    ?.querySelectorAll('[data-close-demo-modal]')
+    .forEach((button) => {
+      button.addEventListener('click', closeDemoModal);
+    });
+
+  document.addEventListener('click', (event) => {
+    if (!mobileMenu || !menuButton) return;
+    if (!(event.target instanceof Node)) return;
+
+    if (
+      mobileMenu.contains(event.target) ||
+      menuButton.contains(event.target)
+    ) {
+      return;
+    }
+
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.key === 'Escape' &&
+      demoModal?.classList.contains('active')
+    ) {
+      closeDemoModal();
+    }
+  });
+
+  demoForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const submitButton = form.querySelector('.hero-demo-submit');
+    const submitLabel = form.querySelector('[data-demo-submit-label]');
+    const submitLoading = form.querySelector(
+      '[data-demo-submit-loading]',
+    );
+
+    submitButton.disabled = true;
+    submitLabel.hidden = true;
+    submitLoading.hidden = false;
+
+    demoMessage.textContent = '';
+    demoMessage.className = 'hero-demo-message';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('No fue posible enviar la solicitud.');
+      }
+
+      form.reset();
+
+      demoMessage.textContent =
+        'Solicitud enviada correctamente. Nos comunicaremos contigo pronto.';
+      demoMessage.classList.add('success');
+    } catch (error) {
+      demoMessage.textContent =
+        'No fue posible enviar la solicitud. Revisa tus datos e inténtalo nuevamente.';
+      demoMessage.classList.add('error');
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.hidden = false;
+      submitLoading.hidden = true;
+    }
+  });
+
+  document.addEventListener('astro:before-swap', () => {
+    document.body.style.overflow = '';
+  });
+</script>

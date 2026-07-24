@@ -1,0 +1,55 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Nos cuentas tu idea',
+    text: 'Hablamos de tu negocio, lo que hoy te causa problemas y lo que quieres conseguir.',
+  },
+  {
+    number: '02',
+    title: 'Definimos una solución',
+    text: 'Te presentamos una propuesta clara con alcance, etapas y prioridades, sin palabras complicadas.',
+  },
+  {
+    number: '03',
+    title: 'Diseñamos y desarrollamos',
+    text: 'Construimos tu proyecto y te mostramos avances para validar que todo tenga sentido para ti.',
+  },
+  {
+    number: '04',
+    title: 'Publicamos y te acompañamos',
+    text: 'Dejamos la solución funcionando, te enseñamos a usarla y seguimos disponibles para apoyarte.',
+  },
+];
+---
+
+<section id="proceso" class="relative overflow-hidden bg-[#f2f6ff] py-20 sm:py-24 lg:py-28">
+  <div class="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-blue-200/60 blur-3xl"></div>
+  <div class="pointer-events-none absolute -left-28 bottom-0 h-72 w-72 rounded-full bg-orange-100/80 blur-3xl"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex rounded-full bg-white px-4 py-2 text-sm font-bold text-blue-700 shadow-sm ring-1 ring-blue-100">Un proceso sencillo</span>
+      <h2 class="mt-5 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-4xl lg:text-5xl">
+        Sabes qué estamos haciendo y qué sigue.
+      </h2>
+      <p class="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
+        Trabajamos por etapas para que puedas revisar, decidir y avanzar con tranquilidad.
+      </p>
+    </div>
+
+    <div class="relative mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <div class="absolute left-[12.5%] right-[12.5%] top-8 hidden h-px bg-blue-200 lg:block"></div>
+
+      {steps.map((step) => (
+        <article class="relative rounded-[1.75rem] border border-white bg-white/90 p-6 shadow-sm backdrop-blur sm:p-7">
+          <div class="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-700 text-lg font-black text-white shadow-lg shadow-blue-700/20">
+            {step.number}
+          </div>
+          <h3 class="mt-6 text-xl font-black text-slate-950">{step.title}</h3>
+          <p class="mt-3 text-sm leading-7 text-slate-600">{step.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

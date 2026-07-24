@@ -1,24 +1,48 @@
 import { useForm, ValidationError } from '@formspree/react';
 
+const fieldClass =
+  'w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100';
+
+const labelClass =
+  'mb-2 block text-sm font-bold text-slate-700';
+
+const errorClass =
+  'mt-2 text-xs font-semibold text-red-600';
+
 export default function ContactForm() {
-  const [state, handleSubmit] = useForm("mjglpzne");
-
-  const fieldClass =
-    "w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm text-white placeholder:text-slate-500 outline-none transition-all duration-300 focus:border-cyan-400/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-cyan-400/10";
-
-  const labelClass = "mb-2 block text-sm font-medium text-slate-300";
+  const [state, handleSubmit] = useForm('xaqzanwj');
 
   if (state.succeeded) {
     return (
-      <div className="rounded-3xl border border-green-400/20 bg-green-400/10 px-6 py-10 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-400/15 text-green-300">
-          <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+      <div
+        className="rounded-3xl border border-emerald-200 bg-emerald-50 px-6 py-10 text-center"
+        role="status"
+        aria-live="polite"
+      >
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600 text-white">
+          <svg
+            className="h-7 w-7"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 13l4 4L19 7"
+            />
           </svg>
         </div>
-        <h4 className="text-xl font-bold text-white">Mensaje enviado</h4>
-        <p className="mt-2 text-sm text-slate-400">
-          Gracias por contactarnos. Te responderemos lo antes posible.
+
+        <h4 className="mt-5 text-xl font-black text-slate-950">
+          Recibimos tu mensaje
+        </h4>
+
+        <p className="mt-2 text-sm leading-6 text-slate-600">
+          Gracias por escribirnos. Revisaremos la información y te
+          contactaremos lo antes posible.
         </p>
       </div>
     );
@@ -26,114 +50,234 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div>
-        <label htmlFor="name" className={labelClass}>
-          Nombre completo
-        </label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          placeholder="Ej. RexCoreSolutions"
-          required
-          className={fieldClass}
-        />
-        <ValidationError prefix="Nombre" field="name" errors={state.errors} />
+      {/* Información adicional para identificar el correo */}
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nuevo contacto desde RexCoreSolutions"
+      />
+
+      <input
+        type="hidden"
+        name="origen"
+        value="Formulario general de contacto"
+      />
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className={labelClass}>
+            Nombre
+          </label>
+
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            placeholder="Tu nombre"
+            required
+            className={fieldClass}
+          />
+
+          <ValidationError
+            prefix="Nombre"
+            field="name"
+            errors={state.errors}
+            className={errorClass}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="business" className={labelClass}>
+            Negocio o empresa
+          </label>
+
+          <input
+            id="business"
+            name="business"
+            type="text"
+            autoComplete="organization"
+            placeholder="Nombre de tu negocio"
+            className={fieldClass}
+          />
+
+          <ValidationError
+            prefix="Negocio"
+            field="business"
+            errors={state.errors}
+            className={errorClass}
+          />
+        </div>
       </div>
 
       <div>
         <label htmlFor="email" className={labelClass}>
           Correo electrónico
         </label>
+
         <input
           id="email"
-          type="email"
           name="email"
+          type="email"
+          autoComplete="email"
           placeholder="correo@empresa.com"
           required
           className={fieldClass}
         />
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
+
+        <ValidationError
+          prefix="Correo"
+          field="email"
+          errors={state.errors}
+          className={errorClass}
+        />
       </div>
 
       <div>
         <label htmlFor="service" className={labelClass}>
-          Servicio de interés
+          ¿Qué te gustaría crear?
         </label>
+
         <div className="relative">
           <select
             id="service"
             name="service"
-            defaultValue="Desarrollo de Software Custom"
-            className={`${fieldClass} appearance-none pr-12`}
+            defaultValue=""
+            required
+            className={`${fieldClass} appearance-none pr-11`}
           >
-            <option className="bg-slate-900" value="Desarrollo de Software Custom">
-              Desarrollo de Software Custom
+            <option value="" disabled>
+              Selecciona una opción
             </option>
-            <option className="bg-slate-900" value="App Móvil">
-              Desarrollo de App Móvil
+
+            <option value="Página web">
+              Una página web
             </option>
-            <option className="bg-slate-900" value="Paquete Web All-in-One">
-              Paquete Web All-in-One
+
+            <option value="Sistema para negocio">
+              Un sistema para mi negocio
             </option>
-            <option className="bg-slate-900" value="Otro">
-              Otro requerimiento
+
+            <option value="Aplicación móvil">
+              Una aplicación móvil
+            </option>
+
+            <option value="Mejora de proyecto existente">
+              Mejorar algo que ya tengo
+            </option>
+
+            <option value="No estoy seguro">
+              Todavía no estoy seguro
             </option>
           </select>
 
           <svg
-            className="pointer-events-none absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
+            className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m6 9 6 6 6-6"
+            />
           </svg>
         </div>
-        <ValidationError prefix="Servicio" field="service" errors={state.errors} />
+
+        <ValidationError
+          prefix="Servicio"
+          field="service"
+          errors={state.errors}
+          className={errorClass}
+        />
       </div>
 
       <div>
         <label htmlFor="message" className={labelClass}>
-          Detalles del proyecto
+          Cuéntanos qué necesitas
         </label>
+
         <textarea
           id="message"
           name="message"
-          placeholder="Cuéntanos qué necesitas, objetivos, tiempos o funcionalidades principales..."
-          required
           rows={5}
-          className={`${fieldClass} resize-none`}
+          placeholder="Por ejemplo: quiero recibir más solicitudes, controlar mis ventas o dejar de usar hojas de cálculo..."
+          required
+          className={`${fieldClass} resize-y`}
         />
-        <ValidationError prefix="Mensaje" field="message" errors={state.errors} />
+
+        <ValidationError
+          prefix="Mensaje"
+          field="message"
+          errors={state.errors}
+          className={errorClass}
+        />
       </div>
 
       <button
         type="submit"
         disabled={state.submitting}
-        className="group relative flex w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-4 text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-70"
+        className="group inline-flex w-full items-center justify-center rounded-full bg-blue-700 px-7 py-4 text-sm font-black text-white shadow-lg shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        <span className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        {state.submitting ? (
+          <>
+            <svg
+              className="mr-2 h-5 w-5 animate-spin"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                className="opacity-30"
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
 
-        <span className="relative flex items-center gap-2">
-          {state.submitting ? (
-            <>
-              <svg className="h-5 w-5 animate-spin text-slate-950" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-              Enviando...
-            </>
-          ) : (
-            <>
-              Enviar mensaje
-              <svg className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </>
-          )}
-        </span>
+              <path
+                className="opacity-90"
+                fill="currentColor"
+                d="M21 12a9 9 0 00-9-9v4a5 5 0 015 5h4z"
+              />
+            </svg>
+
+            Enviando mensaje...
+          </>
+        ) : (
+          <>
+            Enviar mi información
+
+            <svg
+              className="ml-2 h-4 w-4 transition group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 12h14m-6-6 6 6-6 6"
+              />
+            </svg>
+          </>
+        )}
       </button>
+
+      <ValidationError
+        errors={state.errors}
+        className={errorClass}
+      />
+
+      <p className="text-center text-xs leading-5 text-slate-400">
+        Solo utilizaremos tus datos para responder a tu solicitud.
+      </p>
     </form>
   );
 }

@@ -2,79 +2,56 @@
 import ContactForm from './ContactForm.jsx';
 ---
 
-<section id="contacto" class="relative overflow-hidden border-t border-white/10 bg-slate-950 py-20 lg:py-28">
-  <div class="absolute inset-0 -z-10">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.18),transparent_35%)]"></div>
-    <div class="absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"></div>
-  </div>
+<section id="contacto" class="relative overflow-hidden bg-[#eef4ff] py-20 sm:py-24 lg:py-28">
+  <div class="pointer-events-none absolute -left-24 top-20 h-80 w-80 rounded-full bg-blue-200/60 blur-3xl"></div>
+  <div class="pointer-events-none absolute -right-28 bottom-0 h-96 w-96 rounded-full bg-orange-100/80 blur-3xl"></div>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-      
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
       <div>
-        <span class="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-300">
-          Contacto
-        </span>
-
-        <h2 class="mb-6 max-w-2xl text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-          Hagamos realidad tu próxima solución digital
+        <span class="inline-flex rounded-full bg-white px-4 py-2 text-sm font-bold text-blue-700 shadow-sm ring-1 ring-blue-100">Hablemos de tu proyecto</span>
+        <h2 class="mt-5 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-4xl lg:text-5xl">
+          Cuéntanos qué quieres mejorar en tu negocio.
         </h2>
-
-        <p class="mb-10 max-w-xl text-lg leading-relaxed text-slate-400">
-          Cuéntanos tu idea y te ayudamos a transformarla en una página web, sistema, automatización o aplicación funcional para tu negocio.
+        <p class="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+          No necesitas tener todo definido. Explícanos el problema o la idea y te ayudaremos a encontrar el mejor punto de partida.
         </p>
 
-        <div class="space-y-4">
-          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-300">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V8l-6-6H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        <div class="mt-8 grid gap-4">
+          <div class="flex gap-4 rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-slate-200/80">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-blue-100 text-blue-700">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h8M8 14h5m8-2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-            </div>
+            </span>
             <div>
-              <h3 class="font-semibold text-white">Diagnóstico claro</h3>
-              <p class="mt-1 text-sm leading-relaxed text-slate-400">
-                Revisamos tus necesidades y te proponemos una solución alineada a tus objetivos.
-              </p>
+              <h3 class="font-black text-slate-950">Primera conversación sin complicaciones</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Te haremos preguntas sencillas para entender lo que necesitas.</p>
             </div>
           </div>
 
-          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-400/10 text-blue-300">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <div class="flex gap-4 rounded-3xl bg-white/80 p-5 shadow-sm ring-1 ring-slate-200/80">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-orange-100 text-orange-700">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4m5 2a8 8 0 11-16 0 8 8 0 0116 0z" />
               </svg>
-            </div>
+            </span>
             <div>
-              <h3 class="font-semibold text-white">Desarrollo profesional</h3>
-              <p class="mt-1 text-sm leading-relaxed text-slate-400">
-                Creamos herramientas modernas, visuales y fáciles de usar para mejorar tu operación.
-              </p>
+              <h3 class="font-black text-slate-950">Una propuesta clara</h3>
+              <p class="mt-1 text-sm leading-6 text-slate-600">Recibirás una recomendación entendible y enfocada en prioridades.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="relative">
-        <div class="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-500/30 blur-2xl"></div>
-
-        <div class="relative rounded-[2rem] border border-white/10 bg-slate-900/80 p-6 shadow-2xl backdrop-blur-xl md:p-8">
-          <div class="mb-7">
-            <p class="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">
-              Comencemos
-            </p>
-            <h3 class="text-2xl font-bold text-white md:text-3xl">
-              Envíanos un mensaje
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-400">
-              Completa el formulario y nos pondremos en contacto contigo para conocer más detalles.
-            </p>
-          </div>
-
-          <ContactForm client:load />
+      <div class="rounded-[2.25rem] border border-white bg-white p-5 shadow-[0_30px_80px_rgba(30,64,175,.14)] sm:p-8 lg:p-10">
+        <div class="mb-7">
+          <p class="text-sm font-bold text-blue-700">Comencemos</p>
+          <h3 class="mt-2 text-2xl font-black text-slate-950 sm:text-3xl">Platícanos un poco sobre tu idea</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-500">Te responderemos para revisar juntos los siguientes pasos.</p>
         </div>
+        <ContactForm client:load />
       </div>
-
     </div>
   </div>
 </section>
