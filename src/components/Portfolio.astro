@@ -253,15 +253,48 @@ const projects: Project[] = [
               aria-label={`Ver detalles de ${project.title}`}
             >
               <div class="rex-mobile-card-media">
-                {project.type === 'app-slider' ? (
+                {project.type === 'web-slider' ? (
+                  <div
+                    class="rex-mobile-image-slider"
+                    data-rex-mobile-web-slider
+                  >
+                    {(project.images ?? [project.image]).map(
+                      (image, imageIndex) => (
+                        <img
+                          src={image.src}
+                          class:list={[
+                            'rex-mobile-slide',
+                            imageIndex === 0 && 'active',
+                          ]}
+                          alt={`${project.title} ${imageIndex + 1}`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ),
+                    )}
+                  </div>
+                ) : project.type === 'app-slider' ? (
                   <div class="rex-mobile-app-preview">
                     <div class="rex-mobile-phone">
-                      <img
-                        src={project.image.src}
-                        alt={project.title}
-                        loading="lazy"
-                        decoding="async"
-                      />
+                      <div
+                        class="rex-mobile-app-slider"
+                        data-rex-mobile-app-slider
+                      >
+                        {(project.images ?? [project.image]).map(
+                          (image, imageIndex) => (
+                            <img
+                              src={image.src}
+                              class:list={[
+                                'rex-mobile-app-image',
+                                imageIndex === 0 && 'active',
+                              ]}
+                              alt={`${project.title} ${imageIndex + 1}`}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          ),
+                        )}
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -690,6 +723,33 @@ const projects: Project[] = [
     padding: 12px;
   }
 
+  .rex-mobile-image-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(145deg, #eff6ff, #ffffff);
+  }
+
+  .rex-mobile-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
+    opacity: 0;
+    transform: scale(0.985);
+    transition:
+      opacity 0.8s ease,
+      transform 1s ease;
+  }
+
+  .rex-mobile-slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
   .rex-mobile-card-content {
     padding: 20px;
   }
@@ -736,6 +796,7 @@ const projects: Project[] = [
   }
 
   .rex-mobile-phone {
+    position: relative;
     width: 105px;
     height: 184px;
     overflow: hidden;
@@ -745,11 +806,31 @@ const projects: Project[] = [
     box-shadow: 0 17px 35px rgba(15, 23, 42, 0.2);
   }
 
-  .rex-mobile-phone img {
+  .rex-mobile-app-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 17px;
+  }
+
+  .rex-mobile-app-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 17px;
+    opacity: 0;
+    transform: scale(1.05);
+    transition:
+      opacity 0.8s ease,
+      transform 1s ease;
+  }
+
+  .rex-mobile-app-image.active {
+    opacity: 1;
+    transform: scale(1);
   }
 
   /* =========================
@@ -1131,6 +1212,8 @@ const projects: Project[] = [
     .rex-card-link span,
     .rex-web-slider img,
     .rex-app-image,
+    .rex-mobile-slide,
+    .rex-mobile-app-image,
     .rex-demo-button,
     .rex-request-demo-button,
     .rex-submit-demo-button {
@@ -1463,6 +1546,14 @@ const projects: Project[] = [
 
   rexRotateSlider('[data-rex-web-slider]', 'img');
   rexRotateSlider('[data-rex-app-slider]', '.rex-app-image');
+  rexRotateSlider(
+    '[data-rex-mobile-web-slider]',
+    '.rex-mobile-slide',
+  );
+  rexRotateSlider(
+    '[data-rex-mobile-app-slider]',
+    '.rex-mobile-app-image',
+  );
 
   document.addEventListener('astro:before-swap', () => {
     if (rexAnimationFrame) {
