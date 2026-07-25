@@ -17,6 +17,10 @@ const demoOptions = [
     value: 'Sistema para gimnasios',
     label: 'Sistema para gimnasios',
   },
+  {
+    value: 'Punto de venta',
+    label: 'Punto de venta',
+  },
 ];
 ---
 
@@ -491,13 +495,28 @@ const demoOptions = [
     position: relative;
     width: min(590px, 100%);
     max-height: calc(100dvh - 36px);
+
+    /* Mantiene el scroll, pero oculta la barra vertical */
     overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
     border: 1px solid #dbe6f3;
     border-radius: 30px;
     background: #ffffff;
-    padding: 32px;
+    padding: 32px 32px 38px;
     box-shadow: 0 32px 90px rgba(15, 23, 42, 0.24);
     animation: hero-demo-in 0.22s ease;
+  }
+
+  /* Chrome, Edge, Safari y Opera */
+  .hero-demo-dialog::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .hero-demo-close {
@@ -698,8 +717,18 @@ const demoOptions = [
     .hero-demo-dialog {
       width: 100%;
       max-height: calc(100dvh - 20px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       border-radius: 25px 25px 18px 18px;
-      padding: 25px 20px 20px;
+      padding: 25px 20px 28px;
+    }
+
+    .hero-demo-dialog::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
     }
 
     .hero-demo-grid {
